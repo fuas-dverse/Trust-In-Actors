@@ -1,6 +1,19 @@
 # Trust in AI and Actors across the DVerse
 
-In
+In the project there is an effort made so everyone can possibly trust the actor(s) that are available on the DVerse platform.  
+There is no guaranty that everyone can trust it. Or that it will follow all the laws around the world.  
+The current expectation is to follow at least the GDPR.
+
+## Used extension for Visual Studio Code
+
+Keeping the spelling the same
+
+- [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker): So you have the american spelling of everything.
+
+Markdown
+
+- [markdownlint](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint): formatting of the documents and keeping to standards
+- [Print](https://marketplace.visualstudio.com/items?itemName=pdconsec.vscode-print): generating the PDFs
 
 ## The goal of the project
 
