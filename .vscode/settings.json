@@ -8,7 +8,8 @@
         "Pseudomized",
         "Pseudonymization",
         "SMPC",
-        "Untargeted"
+        "Untargeted",
+        "activitypub"
     ],
     "markdownlint.config": {        
             "MD033": false        
