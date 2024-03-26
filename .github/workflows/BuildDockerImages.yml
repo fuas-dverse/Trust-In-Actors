@@ -19,20 +19,20 @@ jobs:
     - name: Build dockeractor image
       uses: docker/build-push-action@v2
       with:
-        context: .
+        context: ./Security_Bots/Docker-BadActor/
         file: ./Security_Bots/Docker-BadActor/Dockerfile
         load: true
 
     - name: Build basictrustbot image
       uses: docker/build-push-action@v2
       with:
-        context: .
+        context: ./Security_Bots/Docker-BadActor/
         file: ./Security_Bots/TheBasicBot/Dockerfile
         load: true
 
     - name: Build dockerindocker image
       uses: docker/build-push-action@v2
       with:
-        context: .
+        context: ./Security_Bots/Docker-BadActor/
         file: ./Security_Bots/Docker-in-Docker/Dockerfile
         load: true
