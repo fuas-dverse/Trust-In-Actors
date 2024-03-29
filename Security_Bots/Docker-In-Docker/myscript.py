@@ -25,9 +25,9 @@ def check_network_stats(stats):
         diff = current_tx_bytes - last_tx_bytes[container.short_id]
 
         # If the difference is more than 5000
-        if diff > 5000:
+        if diff > 100000:
             # Write a message to the log file
-            f.write(f'Time: {time.ctime()}, Container ID: {container.short_id}, tx_bytes increased by more than 5000 in the last minute.\n')
+            f.write(f'Time: {time.ctime()}, Container ID: {container.short_id}, tx_bytes increased by more than 0.1 mb in the last minute.\n')
 
     # Update the last tx_bytes for this container
     last_tx_bytes[container.short_id] = current_tx_bytes
@@ -43,11 +43,11 @@ with open('/app/logs/docker_logs.txt', 'a') as f:
             # Get the current stats
             stats = container.stats(stream=False)
 
-            if 'networks' in stats:
-                check_network_stats(stats)              
+            # Write the container's id, name, status to the log file
+            f.write(f'Time: {time.ctime()}, Container ID: {container.short_id},Name: {container.name}, Status: {container.status}\n')
 
-            # Write the container's id, status to the log file
-            f.write(f'Time: {time.ctime()}, Container ID: {container.short_id}, Status: {container.status}\n')
+            if 'networks' in stats:
+                check_network_stats(stats)
 
         # Flush the file buffer to ensure that the logs are written to disk
         f.flush()
