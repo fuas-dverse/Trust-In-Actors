@@ -1,0 +1,29 @@
+version: '3.4'
+
+services:
+  dockeractor:
+    image: docker-badactor
+    build:
+      context: .
+      dockerfile: ./Docker-BadActor/Dockerfile
+
+  basictrustbot:
+    image: basictrustbot
+    build:
+      context: .
+      dockerfile: ./TheBasicBot/Dockerfile
+
+  dockerindocker:
+    image: docker-in-docker
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - type: volume
+        source: mylogs
+        target: /app/logs
+    build:
+      context: .
+      dockerfile: ./Docker-in-Docker/Dockerfile
+    command: ["python3", "/myscript.py"]
+
+volumes:
+  mylogs:
