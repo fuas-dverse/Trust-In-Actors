@@ -1,15 +1,17 @@
 {
     "cSpell.words": [
+        "activitypub",
         "Anonymization",
         "APPI",
+        "Auditability",
+        "Explainability",
         "Fediverse",
         "Homomorphic",
         "Operationalizes",
         "Pseudomized",
         "Pseudonymization",
         "SMPC",
-        "Untargeted",
-        "activitypub"
+        "Untargeted"
     ],
     "markdownlint.config": {        
             "MD033": false        
