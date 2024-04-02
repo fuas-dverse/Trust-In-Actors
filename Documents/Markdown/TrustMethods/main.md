@@ -266,16 +266,19 @@ __Clear Rules and Regulations__:
 
 ## What is feasible in the time frame of this project?
 
--
+I would say everything is possible but the Societal and environmental well-being is possibly less important and should be left to an AI group. Everything else is possible to implement within some days. Although not everything should be treated equal so look into the next chapter about what to prioritize.
 
 ## What are we prioritizing?
 
 This depends on the use case, for which the developer should find their own way. But all seven of these 7 key principles should be used.  
 In what I mean, you at least do something about the Accountability and not that you need to do Auditability for every bot. But Auditability is still important and should be implemented or discussed in terms of how it will be done.
 
-## How are we going to plan it?
+Some cases where one should be prioritized over the other could be:
 
--
+- Human Agency and Oversight over Transparency: In a healthcare setting, an AI system is used to predict patient health outcomes. While transparency is important, it might be more crucial to ensure that the AI does not operate independently and that healthcare professionals can override its decisions. This is to ensure that the final decision always incorporates human judgement, especially in life-critical situations.
+- Fairness over Transparency: An AI system used for loan approval should prioritize fairness to ensure all applicants are treated equally, regardless of their race, gender, or background. While it’s important for the system to be transparent, ensuring it doesn’t discriminate is arguably more crucial.
+- Societal and Environmental Well-being over Transparency: An AI system designed to optimize energy usage in a city should prioritize societal and environmental well-being. While it’s beneficial for the system’s decisions to be explainable, the primary focus should be on reducing energy consumption and carbon emissions.
+- Privacy and Data Governance over Robustness and Safety: In a personal digital assistant application, privacy and data governance might be prioritized over robustness and safety. This is because it’s crucial to protect user data and maintain privacy, even if it means the AI might not always function optimally.
 
 ## Resources used
 
