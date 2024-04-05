@@ -23,7 +23,7 @@ services:
     build:
       context: .
       dockerfile: ./Docker-in-Docker/Dockerfile
-    command: ["python3", "/myscript.py"]
+    command: ["python3", "/app/myscript.py"]
 
 volumes:
   mylogs:

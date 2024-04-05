@@ -1,11 +1,27 @@
-FROM docker:latest
-RUN apk add --no-cache python3 py3-pip
-# --break-system-packages is dangerous and can cause OS to break
-RUN pip3 install docker --break-system-packages 
-COPY myscript.py .
-CMD ["python3", "/myscript.py"]
+FROM docker:24
 
-# To start it also include
-# docker run -v /var/run/docker.sock:/var/run/docker.sock my-docker-app
-# For output
-# docker run -it -v /var/run/docker.sock:/var/run/docker.sock my-docker-app
+# Install Python and pip
+RUN apk add --no-cache python3 py3-pip
+
+# Create a virtual environment
+RUN python3 -m venv /venv
+ENV PATH="/venv/bin:$PATH"
+
+# Install the docker package
+RUN pip3 install docker
+
+# Set the working directory
+WORKDIR /app
+
+# Add the requirements for the Python script
+COPY requirements.txt .
+
+# Install Python dependencies from requirements.txt
+RUN pip3 install -r requirements.txt
+
+# Add necessary files
+COPY filekey.key .
+COPY myscript.py .
+
+# Set the default command to run the Python script
+CMD ["python3", "/app/myscript.py"]
