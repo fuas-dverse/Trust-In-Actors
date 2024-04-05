@@ -22,6 +22,7 @@ jobs:
         context: ./Security_Bots/Docker-BadActor/
         file: ./Security_Bots/Docker-BadActor/Dockerfile
         load: true
+        tags: dockeractor:latest
 
     - name: Build basictrustbot image
       uses: docker/build-push-action@v2
