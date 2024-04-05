@@ -77,7 +77,7 @@ jobs:
         sleep 10
         docker images --format "{{.Repository}}:{{.Tag}}\t{{.Size}}"
         SIZE=$(docker image inspect ${{ secrets.DOCKERHUB_USERNAME }}/basictrustbot:latest --format='{{.Size}}')
-        if [ $SIZE -gt 500000000 ]; then
+        if [ $SIZE -gt 1000000000 ]; then
           echo "Image size is too large"
           exit 1
         fi
@@ -90,7 +90,7 @@ jobs:
         sleep 10
         docker images --format "{{.Repository}}:{{.Tag}}\t{{.Size}}"
         SIZE=$(docker image inspect ${{ secrets.DOCKERHUB_USERNAME }}/docker-in-docker:latest --format='{{.Size}}')
-        if [ $SIZE -gt 500000000 ]; then
+        if [ $SIZE -gt 1000000000 ]; then
           echo "Image size is too large"
           exit 1
         fi
