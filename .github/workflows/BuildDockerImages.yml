@@ -45,7 +45,7 @@ jobs:
     - name: Check image size dockeractor
       run: |
         docker images --format "{{.Repository}}:{{.Tag}}\t{{.Size}}"
-        SIZE=$(docker image inspect docker-badactor:latest --format='{{.Size}}')
+        SIZE=$(docker image inspect dockeractor:latest --format='{{.Size}}')
         if [ $SIZE -gt 500000000 ]; then
           echo "Image size is too large"
           exit 1
