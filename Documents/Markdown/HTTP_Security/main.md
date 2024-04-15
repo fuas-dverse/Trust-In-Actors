@@ -50,7 +50,7 @@ First it depends on the use case but the most efficient way of communicating bet
 
 Other than that WSS means that it goes over HTTPS so it can only happen with a secure connection. [WSS on HTTPS]
 
-## other connection types
+## Other connection types
 
 - __WS (WebSocket)__: A real-time communication protocol that enables bidirectional data exchange between a client and a server over a single, long-lived connection.
 - __WSS (WebSocket Secure)__: The secure version of WebSocket, which uses encryption (usually over HTTPS) to protect data transmitted between client and server.
@@ -106,7 +106,7 @@ It's recommended to set the Content-Type header correctly throughout the site. L
 
 ### Referrer-Policy
 
-The Referrer-Policy HTTP header controls how much referrer information (sent via the Referer header) should be included with requests.  Aside from the HTTP header, you can also [set this policy in HTML](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy#integration_with_html).
+The Referrer-Policy HTTP header controls how much referrer information (sent via the Referrer header) should be included with requests.  Aside from the HTTP header, you can also [set this policy in HTML](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy#integration_with_html).
 
 Referrer policy has been supported by browsers since 2014. Today, the default behavior in modern browsers is to no longer send all referrer information (origin, path, and query string) to the same site but to only send the origin to other sites. However, since not all users may be using the latest browser its suggested that you force this behavior by sending this header on all responses. (E.g. `Referrer-Policy: strict-origin-when-cross-origin`)
 
@@ -173,7 +173,7 @@ E.g. `HTTP Cross-Origin-Opener-Policy: same-origin`
 
 ### Cross-Origin-Embedder-Policy (COEP)
 
-he HTTP Cross-Origin-Embedder-Policy (COEP) response header prevents a document from loading any cross-origin resources that don't explicitly grant the document permission (using CORP or CORS).
+The HTTP Cross-Origin-Embedder-Policy (COEP) response header prevents a document from loading any cross-origin resources that don't explicitly grant the document permission (using CORP or CORS).
 
 NOTE: Enabling this will block cross-origin resources not configured correctly from loading
 
