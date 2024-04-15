@@ -1,10 +1,10 @@
 # Important HTTP Security Headers
 
-Based on the other markdown file, I will rank the headers on what is most likely the most important and how it can be implemented in the current know languages (Python and Next.js).
+Based on the main.md markdown file, I will rank the headers on what is most likely the most important and how it can be implemented in the current known languages (Python and Next.js).
 
-Aside of which ones are the likeliest to be important it, I also base it around what you can do with it. Should be implemented at the top and what needs to be removed at the bottom.
+Aside of which security headers are the likeliest to be important it, I also base it around what you can do with it. Should a security header be implemented at the top and what needs to be removed at the bottom.
 
-Although every header should be implemented. I recommend that you at least do it till Set-Cookie as till then it will be things that you should self implement with a high importance of security.  
+Although every header should be implemented. I recommend that you at least do it till Set-Cookie. These headers will provide the highest level of security. Implementing more headers will improve the security level even further.
 I recommend that Content-type and Strict-Transport-Security should be implemented for every actor in the DVerse project.
 
 ## Content Security Policy (CSP)
@@ -13,7 +13,7 @@ Content Security Policy is important because this deals with a lot of the securi
 
 Look through [Content Security Policy Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html) for a more clear understanding of all possible options.
 
-The following block only allows scripts only from the same origin ('self') and also allow inline scripts ('unsafe-inline').
+The following block only allows scripts from the same origin ('self') and also allow inline scripts ('unsafe-inline').
 
 Python:
 
@@ -25,8 +25,6 @@ connection = requests.get('example.com', headers=csp_header)
 ````
 
 For Next.js it will be easier to look at: <https://nextjs.org/docs/app/building-your-application/configuring/content-security-policy>
-
-The following is the most important part of the document. In this it achieves for each request to a page. I do recommend with Nonces as it says in the document that there are legitimate scenarios where inline scripts are necessary.
 
 TypeScript:
 
@@ -76,7 +74,7 @@ export function middleware(request: NextRequest) {
 
 ## Permission-Policy
 
-I think this is important because with this you can  disable browser features.  
+I think this is important because Permission-policy helps to prevent browser features getting accessed by restricting certain features.  
 You can control it so which origins can use which browser features, both in the top-level page and in embedded frames.
 
 This helps prevent that an injection, for example an XSS, enables the camera, the microphone, or other browser feature.
@@ -291,6 +289,8 @@ module.exports = {
 ````
 
 ## Access-Control-Allow-Origin
+
+"The Access-Control-Allow-Origin response header indicates whether the response can be shared with requesting code from the given origin." It is the most significant header in the cross-origin resource sharing (CORS) specification.
 
 If you don't use this header, your site is protected by default by the Same Origin Policy (SOP). What this header does is relax this control in specified circumstances.
 
