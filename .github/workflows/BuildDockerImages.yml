@@ -94,3 +94,22 @@ jobs:
           echo "Image size is too large"
           exit 1
         fi
+
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Kubectl
+      uses: azure/setup-kubectl@v1
+
+    - name: Deploy to Kubernetes
+      run: |
+        kubectl apply -f k8s/
+
+    - name: Verify deployment
+      run: |
+        kubectl get pods

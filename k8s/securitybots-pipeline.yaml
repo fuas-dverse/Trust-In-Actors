@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+      - name: dockeractor
+        image: ${{ secrets.DOCKERHUB_USERNAME }}/dockeractor:latest
+        ports:
+        - containerPort: 80
+      - name: basictrustbot
+        image: ${{ secrets.DOCKERHUB_USERNAME }}/basictrustbot:latest
+        ports:
+        - containerPort: 80
+      - name: docker-in-docker
+        image: ${{ secrets.DOCKERHUB_USERNAME }}/docker-in-docker:latest
+        ports:
+        - containerPort: 80
