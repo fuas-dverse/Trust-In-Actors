@@ -10,7 +10,7 @@ while True:
             'container_name':container.name,
             'container_status':container.status,
             }
-        print(message)
+        # print(message)
         json_message =json.dumps(message)
         producer.produce('DiD_containers', json_message,callback=delivery_callback)
 
