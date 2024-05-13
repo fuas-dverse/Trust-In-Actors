@@ -29,7 +29,7 @@ def get_tarball(container, input_command):
 
 
 # Kafka consume mechanism
-consumer.subscribe(["docker_download"])
+consumer.subscribe(["DiD_download"])
 
 try:
     while True:
