@@ -2,8 +2,9 @@ import json
 from standardVariables import client,consumer, send_response
 
 def format_message(message):
-    command = message["Action"]
-    container =client.containers.get(message["Container"])
+    json_msg = json.loads(message)
+    command = json_msg["Action"]
+    container =client.containers.get(json_msg["Container"])
     return container, command
 
 
@@ -28,7 +29,7 @@ def proccess_run_container(container,action):
 
 
 # Kafka consume mechanism
-consumer.subscribe(["docker_running"])
+consumer.subscribe(["DiD_running"])
 
 try:
     while True:
@@ -46,7 +47,7 @@ try:
             print("Consumed event from topic {topic}: value = {value:12}".format(
                 topic=msg.topic(), value=msg.value().decode('utf-8')))
             
-            container_id,command= format_message(msg.value)
+            container_id,command= format_message(msg.value().decode('utf-8'))
             json_message = json.dumps(proccess_run_container(container_id,command))
             send_response(json_message)
             

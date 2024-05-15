@@ -2,8 +2,9 @@ import json
 from standardVariables import client, producer, consumer, send_response
 
 def format_message(message):
+    json_msg = json.loads(message)
     command = ""
-    container =client.containers.get(message["Container"])
+    container =client.containers.get(json_msg["Container"])
     return container, command
 
 
@@ -19,7 +20,7 @@ def get_container_logs(container):
 
 
 # Kafka consume mechanism
-consumer.subscribe(["docker_logger"])
+consumer.subscribe(["DiD_logger"])
 
 try:
     while True:
@@ -37,7 +38,7 @@ try:
             print("Consumed event from topic {topic}: value = {value:12}".format(
                 topic=msg.topic(), value=msg.value().decode('utf-8')))
             
-            container_id,command= format_message(msg.value)
+            container_id,command= format_message(msg.value().decode('utf-8'))
             json_message = json.dumps(get_container_logs(container_id))
             send_response(json_message)
             
