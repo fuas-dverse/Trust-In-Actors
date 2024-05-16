@@ -1,0 +1,37 @@
+name: Weekly Workflow
+
+on:
+  schedule:
+    - cron: '0 9 * * 1' # Runs at 9:00 AM UTC every Monday
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up SonarQube
+        run: |
+          echo "SONAR_TOKEN=${{ secrets.SONAR_TOKEN }}" >> $GITHUB_ENV
+          echo "SONAR_HOST_URL=${{ secrets.SONAR_HOST_URL }}" >> $GITHUB_ENV
+
+      - name: Run SonarScanner
+        run: |
+          sonar-scanner \
+            -Dsonar.projectKey=my-project \
+            -Dsonar.sources=src \
+            -Dsonar.tests=tests
+          # Add other relevant parameters
+
+      - name: Run Python Tests
+        run: |
+          pytest tests # Adjust the test command as needed
+
+      - name: Check Kubernetes Setup
+        run: |
+          # Use kubectl commands to validate your Kubernetes setup in the 'k8s' folder
+          # For example:
+          kubectl get pods -n my-namespace
+          # Add other relevant checks
+
