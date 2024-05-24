@@ -23,7 +23,7 @@ def proccess_run_container(container,action):
         container.stop()
         message = "Container stopped"
     else:
-        print("This action is not supported")
+        message = "This action is not supported"
 
     return message
 
