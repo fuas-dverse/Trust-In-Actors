@@ -23,5 +23,12 @@
     ],
     "markdownlint.config": {        
             "MD033": false        
-    }
+    },
+    "sonarlint.connectedMode.project": {
+        "connectionId": "http-localhost-9000-",
+        "projectKey": "TrustInActors"
+    },
+    "python.analysis.extraPaths": [
+        "./DockerInDocker/test_"
+    ]
 }
