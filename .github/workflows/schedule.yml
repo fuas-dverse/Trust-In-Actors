@@ -11,18 +11,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up SonarQube
-        run: |
-          echo "SONAR_TOKEN=${{ secrets.SONAR_TOKEN }}" >> $GITHUB_ENV
-          echo "SONAR_HOST_URL=${{ secrets.SONAR_HOST_URL }}" >> $GITHUB_ENV
-
       - name: Run SonarScanner
-        run: |
-          sonar-scanner \
-            -Dsonar.projectKey=my-project \
-            -Dsonar.sources=src \
-            -Dsonar.tests=tests
-          # Add other relevant parameters
+        uses: SonarSource/sonarcloud-github-action@v2.2.0
+        with:
+            # Additional arguments to the sonar-scanner
+            # args: # optional
+            # Set the sonar.projectBaseDir analysis property
+            projectBaseDir: . # optional, default is .
 
       - name: Run Python Tests
         run: |
