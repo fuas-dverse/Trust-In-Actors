@@ -98,18 +98,35 @@ jobs:
   deploy:
     needs: test
     runs-on: ubuntu-latest
-
+    defaults:
+      run:
+        shell: bash
+        working-directory: Security_Bots
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-    - name: Set up Kubectl
-      uses: azure/setup-kubectl@v1
+      - uses: azure/docker-login@v1
+        with:
+          login-server: TrustInActors.azurecr.io
+          username: ${{ secrets.REGISTRY_USERNAME }}
+          password: ${{ secrets.REGISTRY_PASSWORD }}
 
-    - name: Deploy to Kubernetes
-      run: |
-        kubectl apply -f k8s/ --validate=false
+      - name: Push Docker image to container registry
+        run: |
+          docker push dversegooglesearchagent.azurecr.io/security:${{ github.sha }}
 
-    - name: Verify deployment
-      run: |
-        kubectl get pods
+      
+
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Kubectl
+        uses: azure/setup-kubectl@v1
+
+      - name: Deploy to Kubernetes
+        run: |
+          kubectl apply -f k8s/ --validate=false
+
+      - name: Verify deployment
+        run: |
+          kubectl get pods
