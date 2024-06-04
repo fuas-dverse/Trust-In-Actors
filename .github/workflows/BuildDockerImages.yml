@@ -101,32 +101,22 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: Security_Bots
+        working-directory: ./Security_Bots//Docker-In-Docker/
     steps:
       - uses: actions/checkout@v2
 
       - uses: azure/docker-login@v1
         with:
-          login-server: TrustInActors.azurecr.io
+          login-server: trustinactors.azurecr.io
           username: ${{ secrets.REGISTRY_USERNAME }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
 
       - name: Push DiD image to container registry
         run: |
-          docker build -t trustinactors.azurecr.io/dockerdocker:${{ github.sha }} ./Docker-In-Docker/
+          docker build -t trustinactors.azurecr.io/dockerdocker:${{ github.sha }} .
           docker push trustinactors.azurecr.io/dockerdocker:${{ github.sha }}
 
-          
-      - name: Push actor image to container registry
-        run: |
-          docker build -t trustinactors.azurecr.io/actor:${{ github.sha }} ./Docker-BadActor/
-          docker push trustinactors.azurecr.io/actor:${{ github.sha }}
-
-      
-      - name: Push basic image to container registry
-        run: |
-            docker build -t trustinactors.azurecr.io/basic:${{ github.sha }} ./TheBasicBot/
-            docker push trustinactors.azurecr.io/basic:${{ github.sha }}
+     
   
 
       - name: Checkout code
