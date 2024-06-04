@@ -113,6 +113,7 @@ jobs:
 
       - name: Push Docker image to container registry
         run: |
+          docker build -t trustinactors.azurecr.io/security:${{ github.sha }} .
           docker push trustinactors.azurecr.io/security:${{ github.sha }}
 
       
