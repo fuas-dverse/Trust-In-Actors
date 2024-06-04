@@ -113,20 +113,20 @@ jobs:
 
       - name: Push DiD image to container registry
         run: |
-          docker build -t trustinactors.azurecr.io/security_dockerdocker:${{ github.sha }} ./Docker-In-Docker/
-          docker push trustinactors.azurecr.io/security_dockerdocker:${{ github.sha }}
+          docker build -t trustinactors.azurecr.io/dockerdocker:${{ github.sha }} ./Docker-In-Docker/
+          docker push trustinactors.azurecr.io/dockerdocker:${{ github.sha }}
 
           
       - name: Push actor image to container registry
         run: |
-          docker build -t trustinactors.azurecr.io/security_actor:${{ github.sha }} ./Docker-BadActor/
-          docker push trustinactors.azurecr.io/security_actor:${{ github.sha }}
+          docker build -t trustinactors.azurecr.io/actor:${{ github.sha }} ./Docker-BadActor/
+          docker push trustinactors.azurecr.io/actor:${{ github.sha }}
 
       
       - name: Push basic image to container registry
         run: |
-            docker build -t trustinactors.azurecr.io/security_basic:${{ github.sha }} ./TheBasicBot/
-            docker push trustinactors.azurecr.io/security_basic:${{ github.sha }}
+            docker build -t trustinactors.azurecr.io/basic:${{ github.sha }} ./TheBasicBot/
+            docker push trustinactors.azurecr.io/basic:${{ github.sha }}
   
 
       - name: Checkout code
