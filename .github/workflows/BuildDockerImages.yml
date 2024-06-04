@@ -101,7 +101,7 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: ./Security_Bots//Docker-In-Docker/
+        working-directory: ./Security_Bots/
     steps:
       - uses: actions/checkout@v2
 
@@ -113,7 +113,7 @@ jobs:
 
       - name: Push DiD image to container registry
         run: |
-          docker build -t trustinactors.azurecr.io/dockerdocker:${{ github.sha }} .
+          docker build -t trustinactors.azurecr.io/dockerdocker:${{ github.sha }} ./Docker-In-Docker/
           docker push trustinactors.azurecr.io/dockerdocker:${{ github.sha }}
 
      
