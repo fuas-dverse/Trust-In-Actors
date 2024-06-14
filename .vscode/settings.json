@@ -19,6 +19,7 @@
         "Pseudonymization",
         "SMPC",
         "stackoverflow",
+        "timeframe",
         "Untargeted"
     ],
     "markdownlint.config": {        
@@ -30,5 +31,7 @@
     },
     "python.analysis.extraPaths": [
         "./DockerInDocker/test_"
-    ]
+    ],
+    "python.analysis.typeCheckingMode": "basic",
+    "python.analysis.autoImportCompletions": true
 }
