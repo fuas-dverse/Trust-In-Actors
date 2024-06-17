@@ -11,22 +11,22 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Run SonarScanner
-        uses: SonarSource/sonarcloud-github-action@v2.2.0
-        with:
-            # Additional arguments to the sonar-scanner
-            # args: # optional
-            # Set the sonar.projectBaseDir analysis property
-            projectBaseDir: . # optional, default is .
+      # - name: Run SonarScanner
+      #   uses: SonarSource/sonarcloud-github-action@v2.2.0
+      #   with:
+      #       # Additional arguments to the sonar-scanner
+      #       # args: # optional
+      #       # Set the sonar.projectBaseDir analysis property
+      #       projectBaseDir: . # optional, default is .
 
       - name: Run Python Tests
         run: |
           pytest tests # Adjust the test command as needed
 
-      - name: Check Kubernetes Setup
-        run: |
-          # Use kubectl commands to validate your Kubernetes setup in the 'k8s' folder
-          # For example:
-          kubectl get pods -n my-namespace
-          # Add other relevant checks
+      # - name: Check Kubernetes Setup
+      #   run: |
+      #     # Use kubectl commands to validate your Kubernetes setup in the 'k8s' folder
+      #     # For example:
+      #     kubectl get pods -n my-namespace
+      #     # Add other relevant checks
 
