@@ -161,3 +161,4 @@ cython_debug/
 
 # Ignore Fernet key(s)
 # Security_Bots/Docker-In-Docker/filekey.key
+Security_Bots/Encryption/*.pem

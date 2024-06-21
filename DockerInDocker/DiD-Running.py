@@ -2,7 +2,9 @@ import json
 from standardVariables import client,consumer, send_response
 
 def format_message(message):
-    json_msg = json.loads(message)
+    json_msg = json.loads(message)    
+    json_msg = json.loads(json_msg)    
+    print(json_msg)
     command = json_msg["Action"]
     container =client.containers.get(json_msg["Container"])
     return container, command
